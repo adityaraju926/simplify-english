@@ -1,3 +1,12 @@
+import spacy
+import subprocess
+import sys
+
+try:
+    spacy.load("en_core_web_sm")
+except OSError:
+    subprocess.run([sys.executable, "-m", "spacy", "download", "en_core_web_sm"], check=True)
+
 import streamlit as st
 from scripts.scraping import article_content
 from scripts.preprocessing_textrank import textrank_preprocessing
